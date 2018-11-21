@@ -1,6 +1,6 @@
-// containers/TextField.js
+// containers/AddItem.js
 import { connect } from 'react-redux';
-import { TextField } from '../components';
+import { AddItem } from '../components';
 import { textChange, addItem } from '../actions';
 
 const mapStateToProps = ({ textFieldState }) => ({
@@ -11,12 +11,12 @@ const mapDispatchToProps = dispatch => ({
     textChangeAction(value) {
         dispatch(textChange(value));
     },
-    addItemAction() {
-        dispatch(addItem());
+    addItemAction(value) {
+        dispatch(addItem(value));
     },
 });
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps,
-)(TextField);
+)(AddItem);

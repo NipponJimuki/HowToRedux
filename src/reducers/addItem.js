@@ -1,4 +1,4 @@
-// reducers/textField.js
+// reducers/addItem.js
 import { TEXT_CHANGE, ADD_ITEM } from '../actions/actionTypes';
 
 const initialState = {

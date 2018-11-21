@@ -1,8 +1,14 @@
 // middlewares/index.js
 import { applyMiddleware } from 'redux';
+import { createLogger } from 'redux-logger';
 import changePowerState from './itemList';
-import addCele from './textField';
+import addItem from './addItem';
 
-const middlewares = applyMiddleware(addCele, changePowerState);
+const logger = [];
+if (process.env.NODE_ENV === 'development') {
+    logger.push(createLogger());
+}
+
+const middlewares = applyMiddleware(addItem, changePowerState, ...logger);
 
 export default middlewares;

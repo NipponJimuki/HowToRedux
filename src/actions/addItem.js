@@ -1,4 +1,4 @@
-// actions/textField.js
+// actions/addItem.js
 import { TEXT_CHANGE, ADD_ITEM } from './actionTypes';
 
 export const textChange = payload => ({

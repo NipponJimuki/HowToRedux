@@ -11,7 +11,6 @@ const changePowerState = store => next => action => {
             const changedPowerItems = items.map((key, index) =>
                 index === payload ? { ...key, power: !key.power } : key,
             );
-            console.log(changedPowerItems);
             next(addItem(changedPowerItems));
             break;
         }

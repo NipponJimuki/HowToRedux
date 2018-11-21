@@ -1,4 +1,4 @@
-// middlewares/textField.js
+// middlewares/addItem.js
 import { ADD_ITEM } from '../actions/actionTypes';
 import { textChange as textChangeActionCreator } from '../actions';
 

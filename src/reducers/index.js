@@ -1,6 +1,6 @@
 // reducers/index.js
 import { changePowerState } from './itemList';
-import { textFieldState } from './textField';
+import { textFieldState } from './addItem';
 import { combineReducers } from 'redux';
 
 const reducers = combineReducers({

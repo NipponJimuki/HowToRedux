@@ -4,7 +4,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
 import middlewares from './middlewares';
-import { ItemList, TextField } from './containers';
+import { ItemList, AddItem } from './containers';
 
 const store = createStore(reducers, middlewares);
 
@@ -12,7 +12,7 @@ const store = createStore(reducers, middlewares);
 ReactDom.render(
     <Provider store={store}>
         <>
-            <TextField />
+            <AddItem />
             <ItemList />
         </>
     </Provider>,
