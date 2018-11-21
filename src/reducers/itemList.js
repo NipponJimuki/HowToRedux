@@ -1,4 +1,4 @@
-// reducers/main.js
+// reducers/itemList.js
 import { CHANGE_POWER_STATE } from '../actions/actionTypes';
 
 const initialState = {

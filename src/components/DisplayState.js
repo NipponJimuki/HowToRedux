@@ -8,7 +8,7 @@ class DisplayState extends Component {
     };
 
     render() {
-        return <div>{this.props.power ? 'ON' : 'OFF'}</div>;
+        return <div style={{ width: '45px' }}>{this.props.power ? 'ON' : 'OFF'}</div>;
     }
 }
 DisplayState.propTypes = {

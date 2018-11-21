@@ -1,12 +1,12 @@
 // actions/textField.js
-import { TEXT_CHANGE, ADD_CELE } from './actionTypes';
+import { TEXT_CHANGE, ADD_ITEM } from './actionTypes';
 
 export const textChange = payload => ({
     type: TEXT_CHANGE,
     payload,
 });
 
-export const addCele = payload => ({
-    type: ADD_CELE,
+export const addItem = payload => ({
+    type: ADD_ITEM,
     payload,
 });

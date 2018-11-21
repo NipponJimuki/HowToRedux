@@ -1,33 +1,29 @@
-// components/AddComponent.js
+// components/TextField.js
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class TextField extends Component {
     static defaultProps = {
         textChangeAction() {},
-        addCeleAction() {},
+        addItemAction() {},
         textValue: '',
-        celes: [],
     };
 
     _onChange = e => this.props.textChangeAction(e.target.value);
-    _onClick = () => this.props.addCeleAction(this.props.textValue);
+    _onClick = () => this.props.addItemAction();
 
     render() {
-        const { textValue, celes } = this.props;
         return (
             <>
-                <input type="text" onChange={this._onChange} value={textValue} />
+                <input type="text" onChange={this._onChange} value={this.props.textValue} />
                 <button onClick={this._onClick}>追加</button>
-                {celes.join('/')}
             </>
         );
     }
 }
 TextField.propTypes = {
     textChangeAction: PropTypes.func,
-    addCeleAction: PropTypes.func,
+    addItemAction: PropTypes.func,
     textValue: PropTypes.string,
-    celes: PropTypes.array,
 };
 export default TextField;

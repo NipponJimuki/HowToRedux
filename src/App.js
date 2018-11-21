@@ -1,16 +1,20 @@
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDom from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from './reducers';
-import { TextField } from './containers';
+import middlewares from './middlewares';
+import { ItemList, TextField } from './containers';
 
-const store = createStore(reducers);
+const store = createStore(reducers, middlewares);
 
 // DOM出力
-render(
+ReactDom.render(
     <Provider store={store}>
-        <TextField />
+        <>
+            <TextField />
+            <ItemList />
+        </>
     </Provider>,
-    document.getElementById('content')
+    document.getElementById('content'),
 );
