@@ -1,8 +1,7 @@
 // components/Main.js
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Switch from './Switch';
-import DisplayState from './DisplayState';
+import TextField from './TextField';
 
 class Main extends Component {
     static defaultProps = {
@@ -11,11 +10,9 @@ class Main extends Component {
     };
 
     render() {
-        const { changePowerStateAction, powerState } = this.props;
         return (
             <div>
-                <Switch onClick={changePowerStateAction} />
-                <DisplayState power={powerState} />
+                <TextField />
             </div>
         );
     }

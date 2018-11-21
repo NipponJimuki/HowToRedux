@@ -2,18 +2,15 @@ import React from 'react';
 import { render } from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-// 追加
-import { changePowerState } from './reducers';
-import { Main } from './containers';
+import reducers from './reducers';
+import { TextField } from './containers';
 
-// 追加
-const store = createStore(changePowerState);
+const store = createStore(reducers);
 
 // DOM出力
-// 変更
 render(
     <Provider store={store}>
-        <Main />
+        <TextField />
     </Provider>,
     document.getElementById('content')
 );
