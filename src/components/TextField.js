@@ -5,29 +5,29 @@ import PropTypes from 'prop-types';
 class TextField extends Component {
     static defaultProps = {
         textChangeAction() {},
-        addCeleAction() {},
+        addItemAction() {},
         textValue: '',
-        celes: [],
+        items: [],
     };
 
     _onChange = e => this.props.textChangeAction(e.target.value);
-    _onClick = () => this.props.addCeleAction(this.props.textValue);
+    _onClick = () => this.props.addItemAction(this.props.textValue);
 
     render() {
-        const { textValue, celes } = this.props;
+        const { textValue, items } = this.props;
         return (
             <>
                 <input type="text" onChange={this._onChange} value={textValue} />
                 <button onClick={this._onClick}>追加</button>
-                {celes.join('/')}
+                {items.join('/')}
             </>
         );
     }
 }
 TextField.propTypes = {
     textChangeAction: PropTypes.func,
-    addCeleAction: PropTypes.func,
+    addItemAction: PropTypes.func,
     textValue: PropTypes.string,
-    celes: PropTypes.array,
+    items: PropTypes.array,
 };
 export default TextField;
