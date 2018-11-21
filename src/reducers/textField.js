@@ -1,9 +1,9 @@
 // reducers/textField.js
-import { TEXT_CHANGE, ADD_CELE } from '../actions/actionTypes';
+import { TEXT_CHANGE, ADD_ITEM } from '../actions/actionTypes';
 
 const initialState = {
     textValue: '',
-    celes: [],
+    items: [],
 };
 
 export const textFieldState = (state = initialState, action) => {
@@ -16,10 +16,10 @@ export const textFieldState = (state = initialState, action) => {
                 textValue: payload,
             };
         }
-        case ADD_CELE: {
+        case ADD_ITEM: {
             return {
                 ...state,
-                celes: [...state.celes, payload],
+                items: payload,
             };
         }
         default: {
