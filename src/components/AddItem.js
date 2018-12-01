@@ -1,34 +1,36 @@
 // components/AddItem.js
-import React, { Component } from 'react';
-import { withFormik } from 'formik';
+import React from 'react';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import PropTypes from 'prop-types';
 
-class AddItem extends Component {
-    static defaultProps = {
-        textChangeAction() {},
-        addItemAction() {},
-        textValue: '',
-    };
-
-    render() {
-        const { handleSubmit, handleChange, handleBlur, errors, values } = this.props;
-        return (
+const AddItem = ({ addItemAction }) => (
+    <Formik
+        initialValues={{ item: '' }}
+        validationSchema={Yup.object().shape({
+            item: Yup.string().required('入力必須です'),
+        })}
+        onSubmit={(values, { resetForm }) => {
+            addItemAction(values.item);
+            resetForm();
+        }}
+        render={({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
                     name="item"
+                    value={values.item}
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    value={values.item}
                 />
-                {errors.item && <span>{errors.item}</span>}
+                {errors.item && touched.item && <span>{errors.item}</span>}
                 <button type="submit">追加</button>
             </form>
-        );
-    }
-}
-TextField.propTypes = {
+        )}
+    />
+);
+
+AddItem.propTypes = {
     textChangeAction: PropTypes.func,
     addItemAction: PropTypes.func,
     textValue: PropTypes.string,
@@ -42,26 +44,5 @@ TextField.propTypes = {
         item: PropTypes.string,
     }),
 };
-export default withFormik({
-    mapPropsToValues: () => ({
-        item: '',
-    }),
-    validationSchema: () =>
-        Yup.object().shape({
-            item: Yup.string().required('入力必須です'),
-        }),
-    handleSubmit: (values, { props, resetForm }) => {
-        const { items, addItemAction } = props;
-        const addedItems = [
-            ...items,
-            {
-                id: `item-index-of-${items.length}`,
-                name: values.item,
-                power: false,
-            },
-        ];
-        addItemAction(addedItems);
-        resetForm();
-    },
-    displayName: 'itemForm',
-})(AddItem);
+
+export default AddItem;

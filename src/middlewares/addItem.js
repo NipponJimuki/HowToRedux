@@ -1,23 +1,20 @@
 // middlewares/addItem.js
 import { ADD_ITEM } from '../actions/actionTypes';
-import { textChange as textChangeActionCreator } from '../actions';
 
 const addItem = store => next => action => {
     switch (action.type) {
         case ADD_ITEM: {
-            const { items, textValue } = store.getState().textFieldState;
-            if (!textValue) return false;
+            const { items } = store.getState().textFieldState;
             const addedItems = [
                 ...items,
                 {
                     id: `item-index-of-${items.length}`,
-                    name: textValue,
+                    name: action.payload,
                     power: false,
                 },
             ];
             action.payload = addedItems;
 
-            store.dispatch(textChangeActionCreator(''));
             next(action);
             break;
         }
