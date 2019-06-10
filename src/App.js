@@ -8,7 +8,7 @@ const store = createStore(() => {});
 // DOM出力
 render(
     <Provider store={store}>
-        <div>Text</div>
+        <div>Hello World</div>
     </Provider>,
     document.getElementById('content')
 );
