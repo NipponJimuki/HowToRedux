@@ -6,7 +6,7 @@ const INDENT = 4;
 module.exports = {
     parser: 'babel-eslint',
     parserOptions: {
-        ecmaVersion: 2018,
+        ecmaVersion: 2019,
         sourceType: 'module',
         ecmaFeatures: {
             jsx: true,
@@ -29,7 +29,7 @@ module.exports = {
             },
         ],
         'max-len': [ERROR, 120],
-        'react/jsx-indent': [ERROR, 4],
+        'react/jsx-indent': [ERROR, INDENT],
         'comma-dangle': [ERROR, 'always-multiline'],
         'arrow-parens': [ERROR, 'as-needed'],
         'no-unused-vars': [ERROR, { argsIgnorePattern: '^store$|^next$|^action$$' }],
