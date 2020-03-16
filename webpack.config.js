@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 
 const MODE = process.env.NODE_ENV || 'development';
@@ -11,6 +10,7 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         path: path.join(__dirname, 'build'),
+        chunkFilename: '[name].js',
         publicPath: '/build/',
     },
     resolve: {
@@ -19,7 +19,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 exclude: /node_modules/,
                 use: { loader: 'babel-loader' },
             },
@@ -29,6 +29,24 @@ module.exports = {
         open: true,
         port: 3334,
         publicPath: '/build/',
+    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /react|react-dom/,
+                    name: 'vendor',
+                    chunks: 'initial',
+                    enforce: true,
+                },
+                core: {
+                    test: /redux|react-redux|styled-components|formik/,
+                    name: 'core',
+                    chunks: 'all',
+                    enforce: true,
+                },
+            },
+        },
     },
     performance: { hints: false },
 };
